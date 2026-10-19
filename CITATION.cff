@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Roggenkamp"
+    given-names: "Hauke"
+    orcid: "https://orcid.org/0009-0005-5176-4718"
+  - family-names: "Boegershausen"
+    given-names: "Johannes"
+    orcid: "https://orcid.org/0000-0002-1429-9344"
+  - family-names: "Hildebrand"
+    given-names: "Christian"
+    orcid: "https://orcid.org/0000-0003-4366-3093"
+title: "DICE: Advancing Social Media Research Through Digital In-Context Experiments"
+year: "2026"
+journal: "Journal of Marketing"
+doi: "10.1177/00222429251371702"
+url: "https://doi.org/10.1177/00222429251371702"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Roggenkamp"
+    given-names: "Hauke"
+    orcid: "https://orcid.org/0009-0005-5176-4718"
+  - family-names: "Boegershausen"
+    given-names: "Johannes"
+    orcid: "https://orcid.org/0000-0002-1429-9344"
+  - family-names: "Hildebrand"
+    given-names: "Christian"
+    orcid: "https://orcid.org/0000-0003-4366-3093"
+  doi: "10.1177/00222429251371702"
+  journal: "Journal of Marketing"
+#   month: 9
+#   start: 1 # First page number
+#   end: 10 # Last page number
+  title: "DICE: Advancing Social Media Research Through Digital In-Context Experiments"
+#   issue: 1
+#   volume: 1
+  year: 2026

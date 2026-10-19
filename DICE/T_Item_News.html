@@ -1,0 +1,112 @@
+{{ if i.sponsored }}
+
+<!-- Advertisement -->
+<article id="{{i.doc_id}}" class="news-teaser news-ad-slot">
+    <div class="news-ad-label">Advertisement</div>
+    <a class="news-ad" href="{{i.target}}" target="_blank" rel="noopener" data-doc-id="{{i.doc_id}}">
+        {{ if i.pic_available }}
+        <img class="news-ad-img" src="{{i.media}}" alt="{{i.alt_text}}">
+        {{ endif }}
+        {{ if i.headline }}
+        <div class="news-ad-caption">
+            {{ if i.username }}<span class="news-ad-sponsor">{{i.username}}</span>{{ endif }}
+            {{i.headline}}
+        </div>
+        {{ endif }}
+    </a>
+</article>
+
+{{ else }}
+
+<!-- Teaser -->
+<article id="{{i.doc_id}}" class="news-teaser layout-{{i.layout}} {{ if forloop.counter == 1 }}is-first{{ endif }}"
+         data-article="article_{{i.doc_id}}" role="button" tabindex="0">
+
+    {{ if i.layout == "compact" }}
+    <div class="news-compact">
+        <div class="news-compact-text">
+            {{ if i.kicker }}
+            <div class="news-kicker">{{ if i.premium }}<span class="news-premium">+</span>{{ endif }}{{i.kicker}}</div>
+            {{ endif }}
+            <h2 class="news-headline">{{i.headline}}</h2>
+            {{ if i.username }}<div class="news-byline">By {{i.username}}</div>{{ endif }}
+        </div>
+        {{ if i.pic_available }}
+        <img class="news-thumb" src="{{i.media}}" alt="{{i.alt_text}}">
+        {{ endif }}
+    </div>
+
+    {{ elif i.layout == "overlay" }}
+    <div class="news-overlay">
+        {{ if i.pic_available }}
+        <img class="news-overlay-img" src="{{i.media}}" alt="{{i.alt_text}}">
+        {{ endif }}
+        <div class="news-overlay-text">
+            {{ if i.kicker }}
+            <div class="news-kicker">{{ if i.premium }}<span class="news-premium">+</span>{{ endif }}{{i.kicker}}</div>
+            {{ endif }}
+            <h2 class="news-headline">{{i.headline}}</h2>
+            <div class="news-icons">
+                <i class="bi bi-headphones"></i>
+                <span><i class="bi bi-chat-square"></i>{{ if i.replies }} {{i.replies}}{{ endif }}</span>
+                <i class="bi bi-bookmark"></i>
+            </div>
+        </div>
+    </div>
+
+    {{ else }}
+    {{ if i.pic_available }}
+    <img class="news-teaser-img" src="{{i.media}}" alt="{{i.alt_text}}">
+    {{ endif }}
+    <div class="news-teaser-text">
+        {{ if i.kicker }}
+        <div class="news-kicker">{{ if i.premium }}<span class="news-premium">+</span>{{ endif }}{{i.kicker}}</div>
+        {{ endif }}
+        <h2 class="news-headline">{{i.headline}}</h2>
+        <p class="news-teaser-summary">{{i.teaser}}</p>
+        {{ if i.username }}<div class="news-byline">By {{i.username}}</div>{{ endif }}
+        <div class="news-icons">
+            <i class="bi bi-headphones"></i>
+            <span><i class="bi bi-chat-square"></i>{{ if i.replies }} {{i.replies}}{{ endif }}</span>
+            <i class="bi bi-bookmark"></i>
+        </div>
+    </div>
+    {{ endif }}
+</article>
+
+<!-- Article view -->
+<div class="news-article" tabindex="-1" id="article_{{i.doc_id}}" data-doc-id="{{i.doc_id}}" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="article_title_{{i.doc_id}}">
+    <div class="news-article-header">
+        <button type="button" class="news-back news-close"><i class="bi bi-arrow-left"></i> Back</button>
+        <span class="news-masthead">{{ masthead }}</span>
+        <span class="news-article-header-spacer"></span>
+    </div>
+    <div class="news-article-scroll">
+        <div class="news-article-inner">
+            {{ if i.kicker }}
+            <div class="news-kicker">{{ if i.premium }}<span class="news-premium">+</span>{{ endif }}{{i.kicker}}</div>
+            {{ endif }}
+            <h1 class="news-article-title" id="article_title_{{i.doc_id}}">{{i.headline}}</h1>
+            <p class="news-article-lede">{{i.teaser}}</p>
+            {{ if i.pic_available }}
+            <figure class="news-article-figure">
+                <img src="{{i.media}}" alt="{{i.alt_text}}">
+                {{ if i.alt_text }}<figcaption>{{i.alt_text}}</figcaption>{{ endif }}
+            </figure>
+            {{ endif }}
+            <div class="news-article-meta">
+                {{ if i.username }}By {{i.username}} &middot; {{ endif }}{{i.date_long}}
+            </div>
+            <div class="news-article-body">
+                <p>{{i.text}}</p>
+            </div>
+            <div class="news-article-end">
+                <button type="button" class="btn btn-outline-dark news-back-bottom news-close">
+                    <i class="bi bi-arrow-left"></i> Back to front page
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ endif }}

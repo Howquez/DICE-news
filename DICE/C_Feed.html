@@ -1,0 +1,79 @@
+{{ block head_title }}{{ masthead }}{{ endblock }}
+
+{{ block scripts }}
+    <script src="{{ static 'js/news.js' }}"></script>
+{{ endblock }}
+
+{{ block styles }}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;700;800&family=Playfair+Display:wght@700;900&display=swap">
+    <link rel="stylesheet" href="{{ static 'css/styles.css' }}">
+    <link rel="stylesheet" href="{{ static 'css/news.css' }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ static 'img/favicon.ico' }}">
+{{ endblock }}
+
+{{ block content }}
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="news-loading">
+        <span class="news-masthead news-masthead-animate">{{ masthead }}</span>
+    </div>
+
+    <!-- Header -->
+    <header class="news-header sticky-top">
+        <div class="news-header-inner">
+            <i class="bi bi-list news-header-icon"></i>
+            <span class="news-masthead">{{ masthead }}</span>
+            <i class="bi bi-person news-header-icon"></i>
+        </div>
+    </header>
+
+    <!-- Topic bar -->
+    <nav class="news-topics">
+        <span class="news-topic news-topic-live"><span class="news-live-dot"></span>Live</span>
+        {{ for topic in news_topics }}
+        <span class="news-topic-sep"></span>
+        <span class="news-topic">{{ topic }}</span>
+        {{ endfor }}
+    </nav>
+
+    <!-- Main Content -->
+    <main class="news-main" id="mainContent">
+
+        {{ for i in items.values() }}
+        {{ include C.ITEM_NEWS }}
+        {{ endfor }}
+
+        <div class="news-continue">
+            <button class="btn btn-dark news-continue-btn" id="submitButton" type="submit">
+                Continue
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <footer class="news-footer">
+            <span class="news-masthead news-masthead-small">{{ masthead }}</span>
+            <div class="news-footer-links">
+                <span>Imprint</span>
+                <span>Help &amp; Contact</span>
+                <span>Company</span>
+                <span>Careers</span>
+                <span>Press</span>
+                <span>Jobs</span>
+                <span>Shop</span>
+                <span>Advertise</span>
+                <span>Terms</span>
+                <span>Privacy</span>
+                <span>Cookies &amp; Tracking</span>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Shown when the browser's back button would leave the front page -->
+    <div class="news-notice" id="newsNotice" role="status" aria-live="polite">
+        To finish, scroll down and click <strong>Continue</strong>.
+    </div>
+
+{{ endblock }}
